@@ -91,6 +91,7 @@ var openmapCallback;
         } else {
           centerlonlat = new OpenLayers.LonLat( options.lng, options.lat );
         }
+        options.type = options.type || "ROADMAP";
         if( options.type == "ROADMAP" ) {
           // add OpenStreetMap layer
           projection = new OpenLayers.Projection( 'EPSG:900913' );
