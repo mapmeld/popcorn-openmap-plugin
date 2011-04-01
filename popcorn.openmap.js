@@ -92,16 +92,7 @@ var openmapCallback;
           centerlonlat = new OpenLayers.LonLat( options.lng, options.lat );
         }
         options.type = options.type || "ROADMAP";
-        if( options.type == "ROADMAP" ) {
-          // add OpenStreetMap layer
-          projection = new OpenLayers.Projection( 'EPSG:900913' );
-          displayProjection = new OpenLayers.Projection( 'EPSG:4326' );
-          centerlonlat = centerlonlat.transform( displayProjection, projection );
-          map = new OpenLayers.Map( { div: newdiv, projection: projection, "displayProjection": displayProjection } );
-          var osm = new OpenLayers.Layer.OSM();
-          map.addLayer( osm );
-        }
-        else if( options.type == "SATELLITE" ) {
+        if( options.type == "SATELLITE" ) {
           // add NASA WorldWind / LANDSAT map
           map = new OpenLayers.Map( { div: newdiv, "maxResolution": .28125, tileSize: new OpenLayers.Size( 512, 512 ) } );
           var worldwind = new OpenLayers.Layer.WorldWind( "LANDSAT", "http://worldwind25.arc.nasa.gov/tile/tile.aspx", 2.25, 4, { T: "105" } );
@@ -117,7 +108,18 @@ var openmapCallback;
           var relief = new OpenLayers.Layer.WMS( "USGS Terraserver", "http://terraserver-usa.org/ogcmap.ashx?", { layers: 'DRG' } ); 
           map.addLayer( relief );
         }
-        map.div.style.display = "none";
+        else {
+          // add OpenStreetMap layer
+          projection = new OpenLayers.Projection( 'EPSG:900913' );
+          displayProjection = new OpenLayers.Projection( 'EPSG:4326' );
+          centerlonlat = centerlonlat.transform( displayProjection, projection );
+          map = new OpenLayers.Map( { div: newdiv, projection: projection, "displayProjection": displayProjection } );
+          var osm = new OpenLayers.Layer.OSM();
+          map.addLayer( osm );
+        }
+        if( map ) {
+          map.div.style.display = "none";
+        }
       }
     };
     isGeoReady();
