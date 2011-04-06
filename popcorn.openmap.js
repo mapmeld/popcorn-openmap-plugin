@@ -4,13 +4,13 @@ var openmapCallback;
   
   /**
    * openmap popcorn plug-in 
-   * Adds an OpenLayers + OpenStreetMap map to the target div centered on the location specified by the user
+   * Adds an OpenLayers map and open map tiles (OpenStreetMap [default], NASA WorldWind, or USGS Topographic)
    * Based on the googlemap popcorn plug-in. No StreetView support
    * Options parameter will need a start, end, target, type, zoom, lat and lng
    * -Start is the time that you want this plug-in to execute
    * -End is the time that you want this plug-in to stop executing 
    * -Target is the id of the DOM element that you want the map to appear in. This element must be in the DOM
-   * -Type [optional] either: ROADMAP (OpenStreetMap), SATELLITE (NASA WorldWind / LandSat), or TERRAIN (USGS)
+   * -Type [optional] either: ROADMAP (OpenStreetMap), SATELLITE (NASA WorldWind / LandSat), or TERRAIN (USGS).  ROADMAP/OpenStreetMap is the default.
    * -Zoom [optional] defaults to 2
    * -Lat and Lng are the coordinates of the map if location is not named
    * -Location is a name of a place to center the map, geocoded to coordinates using TinyGeocoder.com
