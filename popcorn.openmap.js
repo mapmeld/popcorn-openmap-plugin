@@ -52,7 +52,7 @@ var openmapCallback;
 
   Popcorn.plugin( "openmap" , function( options ){
     var newdiv,
-	    map,
+        map,
         centerlonlat,
         projection,
         displayProjection,
@@ -63,7 +63,7 @@ var openmapCallback;
     // create a new div within the target div
     // this is later passed on to the maps api
     newdiv               = document.createElement( 'div' );
-    newdiv.id            = "actualmap" + i;
+    newdiv.id            = "openmapdiv" + i;
     newdiv.style.width   = "100%";
     newdiv.style.height  = "100%";
     i++;
